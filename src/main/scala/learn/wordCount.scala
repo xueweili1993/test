@@ -19,7 +19,7 @@ object wordCount {
 
 
     val hdfspath = "hdfs:///lxw/test"
-
+    val savepath = "hdfs:///lxw/result"
 
     val hadoopConf = sc.hadoopConfiguration
 
@@ -42,10 +42,10 @@ object wordCount {
         item
       }
       .reduceByKey((a:Int, b:Int) => a + b)
-      .collect()
-      .foreach(x => println("lixuefei log " + x))
+      //.collect()
+      //.foreach(x => println("lixuefei log " + x))
 
-
+    text.saveAsTextFile(savepath)
 
     sc.stop()
 
